@@ -1,5 +1,5 @@
 import React from 'react'
-import {FaStar, FaStarHalfAlt, FaRegStar} from 'react-cions/fa'
+import {FaStar, FaStarHalfAlt, FaRegStar} from 'react-icons/fa'
 
 function Rating( {value, text }) {
   return (

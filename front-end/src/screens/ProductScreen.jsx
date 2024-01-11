@@ -1,15 +1,26 @@
-import React from 'react'
-import { useParams } from 'react-router-dom'
+import React from 'react';
+import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Row, Col, Image, ListGroup, Card, Button, ListGroupItem } from 'react-bootstrap';
 import Rating from '../components/Rating';
-
+import axios from 'axios';
 
 const ProductScreen = () => {
+  const [product, setProduct] = useState({}); 
+
   const { id: productId } = useParams();
 //   This is id in the URL
 //   id: productId this allows you to rename it.
-  const product = products.find((p) => p._id === productId);
+  
+useEffect(() => {
+    const fetchProduct = async () => {
+        const { data } = await axios.get(`/api/products/${productId}`);
+        setProduct(data); 
+    }
+
+    fetchProduct();
+}, [productId]);
 
 
   return (

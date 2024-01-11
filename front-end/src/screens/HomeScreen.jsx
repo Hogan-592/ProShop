@@ -1,8 +1,22 @@
 import React from 'react'
 import { Row, Col } from 'react-bootstrap'
 import Product from '../components/Product'
+import { useEffect, useState } from 'react'
+import axios from 'axios';
 
 function HomeScreen() {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const { data } = await axios.get('/api/products');
+      setProducts(data);
+    };
+
+    fetchProducts();
+  }, []);
+  // If you put something in the dependancy and that value changes, this use effect is going to run, but we only want it to run once when the page loads, so leave it empty.
+
   return (
     <>
         <h1>Latest Products</h1>
