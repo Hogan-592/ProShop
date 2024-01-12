@@ -12,7 +12,7 @@ const ProductScreen = () => {
   const { id: productId } = useParams();
 //   This is id in the URL
 //   id: productId this allows you to rename it.
-  
+
 useEffect(() => {
     const fetchProduct = async () => {
         const { data } = await axios.get(`/api/products/${productId}`);
