@@ -19,7 +19,7 @@ const SearchBox = () => {
     }
 
   return (
-    <From onSubmit={ submitHandler } className='d-flex'>
+    <Form onSubmit={ submitHandler } className='d-flex'>
         <Form.Control
             type='text'
             name='q'
@@ -31,7 +31,7 @@ const SearchBox = () => {
         <Button type='submit' variant='outline-light' className='p-2 mx-2'>
             Search
         </Button>
-    </From>
+    </Form>
   )
 }
 
