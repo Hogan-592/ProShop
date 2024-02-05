@@ -9,9 +9,12 @@ import Paginate from '../components/Paginate';
 
 
 function HomeScreen() {
-  const { pageNumber } = useParams();
+  const { pageNumber, keyword } = useParams();
 
-  const {data, isLoading, error } = useGetProductsQuery({ pageNumber });
+  const {data, isLoading, error } = useGetProductsQuery({
+    keyword,
+    pageNumber,
+  });
   // If you put something in the dependancy and that value changes, this use effect is going to run, but we only want it to run once when the page loads, so leave it empty.
 
   return (
@@ -37,6 +40,7 @@ function HomeScreen() {
           <Paginate
             pages={data.pages}
             page={data.page}
+            keyword={keyword ? keyword : ''}
           />
         </>) }
     </>
