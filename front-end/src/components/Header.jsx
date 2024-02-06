@@ -8,6 +8,7 @@ import { useLogoutMutation } from '../slices/usersApiSlice';
 import { logout } from '../slices/authSlice';
 import { Link, useNavigate } from 'react-router-dom';
 import SearchBox from './SearchBox';
+import { resetCart } from '../slices/cartSlice';
 
 function Header() {
   //To get the cart items. cart is from whatever you call it from store.js
@@ -23,9 +24,10 @@ function Header() {
     try {
         await logoutApiCall().unwrap();
         dispatch(logout());
+        dispatch(resetCart());
         navigate('/login');
     } catch (err) {
-        console.log(err );
+        console.log(err);
     }
   };
 
